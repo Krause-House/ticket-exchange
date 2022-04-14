@@ -166,7 +166,7 @@ function Booth({ className, type }: BoothProps) {
               <>
                 <div className="flex gap-4">
                   <InputGroup>
-                    <InputLeftAddon children="Token ID" />
+                    <InputLeftAddon>Token ID</InputLeftAddon>
                     <Input
                       type="number"
                       isInvalid={!validTokenId}
@@ -189,7 +189,9 @@ function Booth({ className, type }: BoothProps) {
                   </div>
                 </div>
                 {!validTokenId && (
-                  <div className="text-gray-300">You don't own that token!</div>
+                  <div className="text-gray-300">
+                    You don&apos;t own that token!
+                  </div>
                 )}
                 <a href="" target="_blank" className="mt-12 underline">
                   How do I find my token ID?

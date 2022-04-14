@@ -72,7 +72,7 @@ function Connect() {
           <ModalCloseButton />
           <ModalBody className="flex justify-center">
             {data.connectors.map((x) => (
-              <div className="relative flex justify-center w-72">
+              <div className="relative flex justify-center w-72" key={x.name}>
                 <button
                   key={x.name}
                   onClick={() => connect(x)}
