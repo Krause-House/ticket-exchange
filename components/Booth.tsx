@@ -12,7 +12,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAccount, useNetwork } from "wagmi";
 import useExchange from "../hooks/useTicket";
 import Waiting from "./Waiting";
@@ -80,7 +80,7 @@ function Booth({ className, type }: BoothProps) {
     }
   };
 
-  const getGif = () => {
+  const getGif = useMemo(() => {
     switch (type) {
       case Ticket.UpperLevel:
         return "/upperlevel.gif";
@@ -89,7 +89,7 @@ function Booth({ className, type }: BoothProps) {
       case Ticket.Courtside:
         return "/courtside.gif";
     }
-  };
+  }, [type]);
 
   const toast = useToast();
   const triggerError = (message: string) => {
@@ -128,10 +128,7 @@ function Booth({ className, type }: BoothProps) {
             }
           }}
         >
-          <img
-            src={getGif()}
-            className="w-36 bottom-0 top-0 my-auto absolute"
-          />
+          <img src={getGif} className="w-36 bottom-0 top-0 my-auto absolute" />
           <div className="text-white text-xs py-4 px-2 text-center font-vibes">
             {type}
           </div>
