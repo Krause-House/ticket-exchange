@@ -20,6 +20,10 @@ body {
   background-position: center;
 }
 
+.font-vibes {
+  font-family: Vibes;
+}
+
 a {
   color: inherit;
   text-decoration: none;
