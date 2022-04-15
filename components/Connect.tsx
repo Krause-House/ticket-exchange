@@ -5,11 +5,10 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Tooltip,
   useBoolean,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAccount, useConnect, useNetwork } from "wagmi";
 
 function Connect() {
