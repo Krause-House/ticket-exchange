@@ -31,7 +31,9 @@ function Connect() {
     <>
       {network.chain?.id == 4 || !account ? (
         <motion.div
-          className="font-vibes text-sm border-4 border-black rounded-md p-2 pb-3 flex items-center"
+          className={`font-bold text-xs h-20 mt-4 p-2 px-4 flex items-center button ${
+            data.connected ? "text-xl pb-4" : "font-vibes pb-6"
+          }`}
           onClick={account ? disconnect : setModal.on}
           whileHover={{
             scale: 1.05,
@@ -47,7 +49,7 @@ function Connect() {
         </motion.div>
       ) : (
         <motion.div
-          className="font-vibes text-sm border-4 border-black rounded-md p-2 px-4 gap-2 flex items-center"
+          className="font-vibes font-bold text-xs h-20 mt-4 p-2 px-4 pb-5 flex items-center button"
           onClick={() => switchNetwork && switchNetwork(4)}
           whileHover={{
             scale: 1.05,
@@ -57,7 +59,7 @@ function Connect() {
           }}
         >
           <img src="/ethereum.png" className="w-8 h-8" />
-          <div className="mb-1">Switch to Rinkeby</div>
+          <div className="mb-1">Switch Network</div>
         </motion.div>
       )}
       <Modal

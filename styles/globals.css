@@ -19,6 +19,12 @@ body {
   background-size: cover;
   background-position: center;
 }
+.button {
+  background-image: url("/buttonlarge.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 a {
   color: inherit;
