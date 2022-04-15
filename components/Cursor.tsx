@@ -34,11 +34,12 @@ function Cursor({ children }: CursorProps) {
   return (
     <div ref={ref} className="relative cursor-none">
       <div className="absolute w-screen h-screen">{children}</div>
-      <div className="">
+      <div className="z-50">
         <motion.img
           animate={variants.default}
+          transition={{ ease: "linear", duration: 0 }}
           src={"/cursor.png"}
-          className="w-4"
+          className="w-6"
         />
       </div>
     </div>

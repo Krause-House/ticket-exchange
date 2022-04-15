@@ -35,7 +35,7 @@ const Home: NextPage = () => {
               <Booth className="" type={Ticket.Courtside} />
             </div>
           </div>
-          <div className="px-8 w-full h-32 flex justify-between items-center z-30">
+          <div className="px-8 w-full h-32 flex justify-between items-center absolute top-0">
             <img src={"/logo.png"} className="w-32" />
             <Connect />
           </div>
