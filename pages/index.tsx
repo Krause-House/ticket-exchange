@@ -18,11 +18,11 @@ const Home: NextPage = () => {
         <meta property="twitter:title" content="Krause House Ticket Exchange" />
         <meta
           property="og:image"
-          content="https://firebasestorage.googleapis.com/v0/b/krause-media.appspot.com/o/twitter.png?alt=media"
+          content="https://firebasestorage.googleapis.com/v0/b/krause-media.appspot.com/o/twitter.png"
         />
         <meta
           property="twitter:image"
-          content="https://firebasestorage.googleapis.com/v0/b/krause-media.appspot.com/o/twitter.png?alt=media"
+          content="https://firebasestorage.googleapis.com/v0/b/krause-media.appspot.com/o/twitter.png"
         />
         <meta
           property="og:description"
