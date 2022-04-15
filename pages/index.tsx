@@ -21,10 +21,6 @@ const Home: NextPage = () => {
           className="absolute left-0 top-0 w-screen h-screen object-cover z-0"
         />
         <div className="relative h-screen flex justify-center">
-          <div className="px-8 w-full h-32 flex justify-between items-center">
-            <img src={"/logo.png"} className="w-32" />
-            <Connect />
-          </div>
           <img
             src={"/ticketexchange.gif"}
             className="absolute object-cover max-h-screen mx-auto bottom-0 min-w-[1450px] w-[1450px]"
@@ -38,6 +34,10 @@ const Home: NextPage = () => {
               <Booth className="" type={Ticket.ClubLevel} />
               <Booth className="" type={Ticket.Courtside} />
             </div>
+          </div>
+          <div className="px-8 w-full h-32 flex justify-between items-center z-30">
+            <img src={"/logo.png"} className="w-32" />
+            <Connect />
           </div>
         </div>
       </main>
