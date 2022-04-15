@@ -15,7 +15,15 @@ const Home: NextPage = () => {
         />
 
         <meta property="og:title" content="Krause House Ticket Exchange" />
-        <meta property="og:image" content="/twitter.png" />
+        <meta property="twitter:title" content="Krause House Ticket Exchange" />
+        <meta
+          property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/krause-media.appspot.com/o/twitter.png?alt=media"
+        />
+        <meta
+          property="twitter:image"
+          content="https://firebasestorage.googleapis.com/v0/b/krause-media.appspot.com/o/twitter.png?alt=media"
+        />
         <meta
           property="og:description"
           content="Exchange your OG Krause House Ticket for our new V2 🏀"
