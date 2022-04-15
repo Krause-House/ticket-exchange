@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useAccount } from "wagmi";
 import Booth, { Ticket } from "../components/Booth";
 import Connect from "../components/Connect";
 import styles from "../styles/Home.module.css";
