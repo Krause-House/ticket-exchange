@@ -17,8 +17,8 @@ const Home: NextPage = () => {
         <meta property="og:title" content="Krause House Ticket Exchange" />
         <meta property="og:type" content="website" />
         <meta property="twitter:title" content="Krause House Ticket Exchange" />
-        <meta property="og:image" content={"/favicon.png"} />
-        <meta property="twitter:image" content={"/favicon.png"} />
+        <meta property="og:image" content={"/twitter.png"} />
+        <meta property="twitter:image" content={"/twitter.png"} />
         <meta
           property="og:description"
           content="Exchange your OG Krause House Ticket for our new V2 🏀"
