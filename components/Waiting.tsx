@@ -60,7 +60,17 @@ function Waiting({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
           >
-            Success! Your new ticket should be in your wallet soon.
+            Success! Your new ticket should be in your wallet soon. View the
+            transaction{" "}
+            <b>
+              <a
+                href={`https://rinkeby.etherscan.io/tx/${txnHash}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                here
+              </a>
+            </b>
           </motion.div>
         )}
       </div>
