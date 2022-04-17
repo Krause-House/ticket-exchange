@@ -30,7 +30,7 @@ function Connect() {
     <>
       {network.chain?.id == 4 || !account ? (
         <motion.div
-          className={`font-bold text-xs h-20 mt-4 p-2 px-4 flex items-center button ${
+          className={`font-bold text-xs h-20 p-2 px-4 flex items-center button ${
             data.connected ? "text-xl pb-4" : "font-vibes pb-6"
           }`}
           onClick={account ? disconnect : setModal.on}
