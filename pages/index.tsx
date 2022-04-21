@@ -1,10 +1,42 @@
+import { useToast } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
 import Booth, { Ticket } from "../components/Booth";
 import Connect from "../components/Connect";
+import TicketTypeModal from "../components/TicketTypeModal";
+import { useTicketContext } from "../contexts/TicketContext";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const [{ data: account }] = useAccount();
+  const [showModal, setShowModal] = useState(false);
+  const { state: ticket, dispatch: setTicket } = useTicketContext();
+  const toast = useToast();
+  const triggerError = (message: string) => {};
+
+  useEffect(() => {
+    if (account) {
+      setShowModal(true);
+    }
+  }, [account?.address]);
+
+  const closeModal = () => {
+    if (ticket.ticketAddress) {
+      setShowModal(false);
+    } else {
+      toast({
+        id: "warning",
+        position: "top",
+        title: "Select your ticket type!",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -31,6 +63,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="">
+        <TicketTypeModal isOpen={showModal} close={closeModal} />
         <img
           src={"/city.png"}
           alt=""
