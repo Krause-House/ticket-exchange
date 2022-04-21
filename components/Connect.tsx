@@ -10,6 +10,7 @@ import {
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useAccount, useConnect, useNetwork } from "wagmi";
+import { CHAIN, CHAIN_ID } from "../constants";
 
 function Connect() {
   const [
@@ -28,7 +29,7 @@ function Connect() {
 
   return (
     <>
-      {network.chain?.id == 4 || !account ? (
+      {network.chain?.id == CHAIN_ID || !account ? (
         <motion.div
           className={`font-bold text-xs h-20 p-2 px-4 flex items-center button ${
             data.connected ? "text-xl pb-4" : "font-vibes pb-6"
@@ -49,7 +50,7 @@ function Connect() {
       ) : (
         <motion.div
           className="font-vibes font-bold text-xs h-20 mt-4 p-2 px-4 pb-5 flex items-center button"
-          onClick={() => switchNetwork && switchNetwork(4)}
+          onClick={() => switchNetwork && switchNetwork(CHAIN_ID)}
           whileHover={{
             scale: 1.05,
           }}

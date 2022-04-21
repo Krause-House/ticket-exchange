@@ -12,8 +12,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAccount, useNetwork } from "wagmi";
+import { CHAIN, CHAIN_ID } from "../constants";
 import useExchange from "../hooks/useTicket";
 import Waiting from "./Waiting";
 
@@ -27,12 +28,6 @@ export enum Ticket {
   ClubLevel = "Club Level",
   Courtside = "Courtside",
 }
-
-const CONTRACTS = {
-  [Ticket.UpperLevel]: "0xe13ac4eA901C8A30A219eb8842d1693c387c7a69",
-  [Ticket.ClubLevel]: "0x726CD6af96BC07a25606FfA227d81cff72b658c0c",
-  [Ticket.Courtside]: "0x10304b3bF0529daDfb9c4E975F439e93B5618fB1",
-};
 
 function Booth({ className, type }: BoothProps) {
   const [modal, setModal] = useBoolean();
@@ -48,18 +43,16 @@ function Booth({ className, type }: BoothProps) {
     ownsToken,
     hasToken,
     exchangeToken,
-  } = useExchange(CONTRACTS[type]);
+  } = useExchange();
   const [{ data: account }] = useAccount();
   const [hasTicket, setHasTicket] = useState(false);
   const [isExchanging, setExchanging] = useBoolean(false);
   const [{ data: network }] = useNetwork();
 
   useEffect(() => {
-    if (account) {
-      hasToken().then((has) => {
-        setHasTicket(has);
-      });
-    }
+    hasToken().then((has) => {
+      setHasTicket(has);
+    });
   }, [account]);
 
   useEffect(() => {
@@ -119,8 +112,8 @@ function Booth({ className, type }: BoothProps) {
           onClick={() => {
             if (!account) {
               triggerError("Connect your wallet, Jerry!");
-            } else if (network.chain?.id != 4) {
-              triggerError("Switch to Rinkeby!");
+            } else if (network.chain?.id != CHAIN_ID) {
+              triggerError(`Switch to ${CHAIN}!`);
             } else if (!hasTicket) {
               triggerError(`This wallet doesn't have a ${type} ticket!`);
             } else {

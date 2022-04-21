@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
-import { Contract, ethers } from "ethers";
-// import contractMetadata from "@contracts/Domains.json";
+import { useState } from "react";
+import { Contract } from "ethers";
 import { useToast } from "@chakra-ui/react";
-import {
-  useAccount,
-  useContract,
-  useContractRead,
-  useNetwork,
-  useSigner,
-} from "wagmi";
+import { useAccount, useNetwork, useSigner } from "wagmi";
+import { CHAIN, CHAIN_ID, LEGACY_CONTRACT, V2_CONTRACT } from "../constants";
 declare var window: any;
 
-export default function useTicket(address: string) {
+const ADDRESS = LEGACY_CONTRACT;
+
+export default function useTicket() {
   const [success, setSuccess] = useState<any | undefined>();
   const [loading, setLoading] = useState(false);
   const [waitingOnUser, setWaitingOnUser] = useState(false);
@@ -36,16 +32,16 @@ export default function useTicket(address: string) {
 
   const ownsToken = async (tokenId: number) => {
     try {
-      if (signer && network.chain?.id === 4) {
+      if (signer && network.chain?.id === CHAIN_ID) {
         const contract = new Contract(
-          address,
+          ADDRESS,
           ["function ownerOf(uint256) public view returns (address)"],
           signer
         );
         const owner = await contract.ownerOf(tokenId);
         return owner === account?.address;
-      } else if (network.chain?.id != 4) {
-        triggerError("You gotta be on Rinkeby!");
+      } else if (network.chain?.id != CHAIN_ID) {
+        triggerError(`You gotta be on ${CHAIN}!`);
         return false;
       } else if (!signer) {
         triggerError("Connect your wallet Jerry!");
@@ -59,9 +55,9 @@ export default function useTicket(address: string) {
 
   const hasToken = async () => {
     try {
-      if (signer && network.chain?.id === 4) {
+      if (signer && network.chain?.id === CHAIN_ID) {
         const contract = new Contract(
-          address,
+          ADDRESS,
           ["function balanceOf(address) public view returns (uint256)"],
           signer
         );
@@ -79,7 +75,7 @@ export default function useTicket(address: string) {
       setLoading(true);
       if (signer && ownsToken(tokenId)) {
         const contract = new Contract(
-          address,
+          ADDRESS,
           ["function safeTransferFrom(address, address, uint256) external"],
           signer
         );
@@ -87,7 +83,7 @@ export default function useTicket(address: string) {
         setWaitingOnUser(true);
         let tx = await contract.safeTransferFrom(
           account?.address,
-          "0xd592d7ec844E71b64240d183AA6877BF2A7f351C",
+          V2_CONTRACT,
           tokenId
         );
         setWaitingOnUser(false);

@@ -1,6 +1,4 @@
-import { useToast } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import useTicket from "../hooks/useTicket";
 import { Ticket } from "./Booth";
 import Loader from "./Loader";
 
@@ -44,7 +42,7 @@ function Waiting({
             explorer{" "}
             <b>
               <a
-                href={`https://rinkeby.etherscan.io/tx/${txnHash}`}
+                href={`https://etherscan.io/tx/${txnHash}`}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -64,7 +62,7 @@ function Waiting({
             transaction{" "}
             <b>
               <a
-                href={`https://rinkeby.etherscan.io/tx/${txnHash}`}
+                href={`https://etherscan.io/tx/${txnHash}`}
                 target="_blank"
                 rel="noreferrer"
               >
