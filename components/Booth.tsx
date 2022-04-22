@@ -183,7 +183,11 @@ function Booth({ className, type }: BoothProps) {
                     You don&apos;t own that token!
                   </div>
                 )}
-                <a href="" target="_blank" className="mt-12 underline">
+                <a
+                  href="https://krausehousework.notion.site/How-to-Migrate-Legacy-Tickets-to-the-V2-Ticket-Contract-58f047c48e6f4d0eb3a313d3438c04dd"
+                  target="_blank"
+                  className="mt-12 underline"
+                >
                   How do I find my token ID?
                 </a>
               </>
