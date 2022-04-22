@@ -54,6 +54,7 @@ function TicketTypeModal({ isOpen, close }: TicketTypeModalProps) {
             <a
               href="https://krausehousework.notion.site/How-to-Migrate-Legacy-Tickets-to-the-V2-Ticket-Contract-58f047c48e6f4d0eb3a313d3438c04dd"
               target="_blank"
+              rel="noreferrer"
               className="mt-12 underline"
             >
               How do I know?
