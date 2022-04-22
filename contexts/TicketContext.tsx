@@ -4,7 +4,7 @@ import { LEGACY_CONTRACT } from "../constants";
 type Dispatch = (ticket: string) => void;
 type TicketProviderProps = { children: React.ReactNode };
 type State = {
-  ticketAddress?: string;
+  ticketAddress?: string | null;
 };
 
 const TicketContext = React.createContext<
@@ -16,7 +16,9 @@ function TicketReducer(state: State, newTicketAddress: string) {
 }
 
 function TicketProvider({ children }: TicketProviderProps) {
-  const [state, dispatch] = React.useReducer(TicketReducer, {} as State);
+  const [state, dispatch] = React.useReducer(TicketReducer, {
+    ticketAddress: null,
+  } as State);
 
   const value = { state, dispatch };
   return (

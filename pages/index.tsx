@@ -22,8 +22,14 @@ const Home: NextPage = () => {
     }
   }, [account?.address]);
 
-  const closeModal = () => {
+  useEffect(() => {
     if (ticket.ticketAddress) {
+      setShowModal(false);
+    }
+  }, [ticket.ticketAddress]);
+
+  const closeModal = () => {
+    if (!!ticket.ticketAddress) {
       setShowModal(false);
     } else {
       toast({

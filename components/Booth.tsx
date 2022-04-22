@@ -142,7 +142,7 @@ function Booth({ className, type }: BoothProps) {
             Exchange your {type} ticket
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody className="flex flex-col items-center gap-2 justify-center mt-12">
+          <ModalBody className="flex flex-col items-center gap-2 justify-center">
             {isExchanging ? (
               <Waiting
                 type={type}

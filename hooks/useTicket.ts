@@ -2,10 +2,9 @@ import { useState } from "react";
 import { Contract } from "ethers";
 import { useToast } from "@chakra-ui/react";
 import { useAccount, useNetwork, useSigner } from "wagmi";
-import { CHAIN, CHAIN_ID, LEGACY_CONTRACT, V2_CONTRACT } from "../constants";
+import { CHAIN, CHAIN_ID, V2_CONTRACT } from "../constants";
+import { useTicketContext } from "../contexts/TicketContext";
 declare var window: any;
-
-const ADDRESS = LEGACY_CONTRACT;
 
 export default function useTicket() {
   const [success, setSuccess] = useState<any | undefined>();
@@ -18,6 +17,8 @@ export default function useTicket() {
   const [{ data: signer }] = useSigner();
   const [{ data: account }] = useAccount();
   const toast = useToast();
+
+  const { state: ticket } = useTicketContext();
 
   const triggerError = (message: string) => {
     toast({
@@ -34,7 +35,7 @@ export default function useTicket() {
     try {
       if (signer && network.chain?.id === CHAIN_ID) {
         const contract = new Contract(
-          ADDRESS,
+          ticket.ticketAddress ?? "",
           ["function ownerOf(uint256) public view returns (address)"],
           signer
         );
@@ -57,7 +58,7 @@ export default function useTicket() {
     try {
       if (signer && network.chain?.id === CHAIN_ID) {
         const contract = new Contract(
-          ADDRESS,
+          ticket.ticketAddress ?? "",
           ["function balanceOf(address) public view returns (uint256)"],
           signer
         );
@@ -75,7 +76,7 @@ export default function useTicket() {
       setLoading(true);
       if (signer && ownsToken(tokenId)) {
         const contract = new Contract(
-          ADDRESS,
+          ticket.ticketAddress ?? "",
           ["function safeTransferFrom(address, address, uint256) external"],
           signer
         );
