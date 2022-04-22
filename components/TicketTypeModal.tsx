@@ -22,7 +22,7 @@ function TicketTypeModal({ isOpen, close }: TicketTypeModalProps) {
       <ModalOverlay />
       <ModalContent pb={5}>
         <ModalHeader className="font-vibes w-9/12">
-          How'd you get your ticket?
+          How&apos;d you get your ticket?
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody className="flex flex-col items-center gap-2 justify-center">
