@@ -14,7 +14,6 @@ const Home: NextPage = () => {
   const [showModal, setShowModal] = useState(false);
   const { state: ticket, dispatch: setTicket } = useTicketContext();
   const toast = useToast();
-  const triggerError = (message: string) => {};
 
   useEffect(() => {
     if (account) {
@@ -75,7 +74,12 @@ const Home: NextPage = () => {
           alt=""
           className="absolute left-0 top-0 w-screen h-screen object-cover z-0"
         />
-        <div className="relative h-screen flex justify-center">
+        <div className="relative h-screen md:hidden flex justify-center items-center font-vibes">
+          <div className="w-64 text-center">
+            This app does not support mobile screens.
+          </div>
+        </div>
+        <div className="relative h-screen hidden md:flex justify-center">
           <img
             src={"/ticketexchange.gif"}
             className="absolute object-cover max-h-screen mx-auto bottom-0 min-w-[1450px] w-[1450px]"
