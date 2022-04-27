@@ -10,6 +10,7 @@ import {
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useAccount, useConnect, useNetwork } from "wagmi";
+import { WalletLinkConnector } from "wagmi/connectors/walletLink";
 import { CHAIN, CHAIN_ID } from "../constants";
 
 function Connect() {
@@ -20,6 +21,12 @@ function Connect() {
   const [{ data, error, loading }, connect] = useConnect();
   const [{ data: network }, switchNetwork] = useNetwork();
   const [modal, setModal] = useBoolean();
+  const coinbase = new WalletLinkConnector({
+    options: {
+      appName: "Krause House Ticket Exchange",
+      jsonRpcUrl: process.env.ALCHEMY,
+    },
+  });
 
   useEffect(() => {
     if (account) {
@@ -72,7 +79,7 @@ function Connect() {
         <ModalContent pb={5}>
           <ModalHeader className="font-vibes">Select your wallet</ModalHeader>
           <ModalCloseButton />
-          <ModalBody className="flex justify-center">
+          <ModalBody className="flex flex-col items-center justify-center">
             {data.connectors.map((x) => (
               <div className="relative flex justify-center w-72" key={x.name}>
                 <button
@@ -87,6 +94,16 @@ function Connect() {
                 </button>
               </div>
             ))}
+            <div className="relative flex justify-center w-72" key="Coinbase">
+              <button
+                key="coinbase"
+                onClick={() => connect(coinbase)}
+                className="z-10 border-2 border-black rounded-md flex items-center justify-center hover:bg-black hover:text-white font-semibold transition px-4 py-2 my-2"
+              >
+                <img src="/coinbase.png" className="mr-2 w-6 h-6" />
+                Coinbase
+              </button>
+            </div>
           </ModalBody>
         </ModalContent>
       </Modal>
