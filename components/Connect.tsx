@@ -112,19 +112,6 @@ function Connect() {
                 Coinbase
               </button>
             </div>
-            <div
-              className="relative flex justify-center w-72"
-              key="WalletConnect"
-            >
-              <button
-                key="walletConnect"
-                onClick={() => connect(walletConnect)}
-                className="z-10 border-2 border-black rounded-md flex items-center justify-center hover:bg-black hover:text-white font-semibold transition px-4 py-2 my-2"
-              >
-                <img src="/wallet-connect.png" className="mr-2 w-6 h-6" />
-                Wallet Connect
-              </button>
-            </div>
           </ModalBody>
         </ModalContent>
       </Modal>
